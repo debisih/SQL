@@ -1,0 +1,34 @@
+/** Clothing store:
+Jumpsuits (3)
+Dresses (6)
+Skirts (7)
+Tops (4) 
+Jeans (5)
+**/
+
+create table clothing (id INTEGER PRIMARY KEY, name TEXT, section TEXT, quantity INTEGER, price INTEGER); 
+INSERT into clothing VALUES (1, "jumpsuits", "innerwear", 3, 11);
+INSERT into clothing VALUES (2, "dresses", "outerwear", 6, 12);
+INSERT into clothing VALUES (3, "skirts", "outerwear", 7, 8);
+INSERT into clothing VALUES (4, "tops", "outerwear", 4, 4);
+INSERT into clothing VALUES (5, "jeans", "outerwear", 5, 15);
+INSERT into clothing values (6, "bras", "innerwear", 4, 17);
+insert into clothing values (7, "underwear","innerwear", 5, 9);
+insert into clothing values (8, "biker shorts", "outerwear", 9, 5);
+insert into clothing values (9, "hoodies", "outerwear", 3, 14);
+insert into clothing values (10, "socks", "innerwear", 2, 3);
+insert into clothing values (11, "ear muffs", "outerwear", 4, 10);
+insert into clothing values (12, "jewelry", "outerwear", 6, 7);
+insert into clothing values (13, "bonnet", "innerwear", 8, 6);
+insert into clothing values (14, "bodysuits", "innerwear", 7, 5);
+insert into clothing values (15, "pants", "outerwear", 9, 11);
+SELECT * from clothing;
+
+--display the database ordered by price.
+select * from clothing order by price;
+
+--what is the average price of items in the outerwear section?
+select avg (price) "avg clothing price" from clothing where section='outerwear';
+
+--what is the total of the prices?
+select sum (price) from clothing;
