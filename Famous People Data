@@ -1,0 +1,44 @@
+/* Singers */
+
+CREATE TABLE singers (id INTEGER PRIMARY KEY,
+    name TEXT,
+    song TEXT,
+    origin TEXT);
+
+INSERT INTO singers (name, song, origin) VALUES ("Chris Brown", "Under the Influence", "Virginia");
+INSERT INTO singers (name, song, origin) VALUES ("Burna boy", "Last last", "Port Harcourt");
+INSERT INTO singers (name, song, origin) VALUES ("Beyonce", "Halo", "Houston");
+INSERT INTO singers (name, song, origin) VALUES ("Davido", "Aye", "Atlanta");
+INSERT INTO singers (name, song, origin) VALUES ("Rod Wave", "Heart on ice", "St. Petersburg");
+INSERT INTO singers (name, song, origin) VALUES ("Wande Coal", "Amorawa", "Lagos");
+INSERT INTO singers (name, song, origin) VALUES ("Rema", "Calm down", "Edo");
+INSERT INTO singers (name, song, origin) VALUES ("Ruger", "Red flags", "Lagos");
+
+CREATE TABLE authors (id INTEGER PRIMARY KEY,
+    name TEXT,
+    books TEXT);
+    
+INSERT INTO authors (name, books) VALUES ("Robert Greene", "Power");
+INSERT INTO authors (name, books) VALUES ("Chimamanda Adichie", "Americanah");
+INSERT INTO authors (name, books) VALUES ("Wole Soyinka", "The road");
+INSERT INTO authors (name, books) VALUES ("Robert Kiyosaki", "Rich dad poor dad");
+INSERT INTO authors (name, books) VALUES("Nelson Mandela", "Long walk to freedom");
+INSERT INTO authors (name, books) VALUES 
+("Chinua Achebe", "Things fall apart");
+INSERT INTO authors (name, books) VALUES ("Pooh Bear", "Winnie");
+
+
+-- Choose the related columns from both tables to show the name.
+INSERT INTO singers (name, song) VALUES ("Rema", "Calm down");
+INSERT INTO authors (books, name) VALUES ("Americanah", "Chimamanda Adichie");
+
+-- Join both tables to see the names of singers and authors.
+select singers.name as singers_name, authors.name as authors_name from singers
+    join authors
+    on singers.id= authors.id;
+    
+-- Show only the name of the singer Rema and Pooh Bear.
+select singers.name as singers_name, authors.name as authors_name from singers
+    join authors
+    on singers.id= authors.id
+    where singers.name = 'Rema';
