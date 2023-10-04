@@ -40,3 +40,18 @@ select artist_name, track_name, danceability
 from BIT_DB.spotifydata
 order by danceability 
 limit 10;
+
+#I calculated the avergage popularity for the artists in spotify using CTE to distinguish the "Top Star"
+
+WITH popularity_average_CTE AS (
+SELECT s.artist_name,
+AVG(s.popularity) AS average_popularity
+FROM SpotifyData s 
+GROUP BY s.artist_name
+)
+ 
+SELECT  artist_name,
+        average_popularity,
+        'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90;
