@@ -60,4 +60,32 @@ VALUES
 
 # Analysis: 
 
-# Assign all the companies in the H
+# Assign all the companies in the Healthcare industry as "mother friendly workplace", "acceptable", "Okay leave"
+or "abysmal" based on the maternity leave offered.
+select industry, company_name, maternity_leave_weeks, 
+case when maternity_leave_weeks >= 13 then "mother friendly workplace"
+when maternity_leave_weeks >= 10 then "acceptable"
+when maternity_leave_weeks >= 7 then "Okay leave"
+else "abysmal"
+end as maternity_weeks
+from fortune_companies
+where healthcare_benefits = 1
+order by maternity_leave_weeks desc;
+ 
+# Which companies have a sum of paid time off days greater than 10?
+select company_name, sum (paid_time_off_days) as PTO
+from fortune_companies
+group by company_name
+having PTO >10
+order by PTO asc;
+ 
+# Which companies have a revenue less than 150 and a employees greater than 5000?
+select * from fortune_companies
+where revenue < 150
+and employees >= 5000
+order by employees asc;
+ 
+# Which companies have average employee tenure of "4.5", "6.9", "5.7" years?
+select * 
+from fortune_companies
+where avg_employee_tenure IN ("4.5", "6.9", "5.7");
